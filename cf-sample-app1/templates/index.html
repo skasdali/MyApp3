@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Blue/Green Deployment Demo</title>
+    <link href="../resources/css/bootstrap.min.css" rel="stylesheet" media="screen"/>    
+    <style type="text/css">
+    body {      
+      color: black;
+      text-align: center;
+      vertical-align: center;
+    }
+
+    body.blue {
+      background-color: #65d7ff;  
+    }
+
+    body.green {
+      background-color: #c4e59f;  
+    }
+    </style>
+    <script>
+    function setImage(id, visible) {
+    	var img = document.getElementById(id);
+    	img.style.visibility = (visible ? 'visible' : 'hidden');
+	}
+    </script>
+  </head>
+  <body class="${color}" onload="setImage('planetImg', false)">
+    <img src="img/kcap_${color}.jpg" onmouseout="setImage('planetImg', false)" usemap="#planetmap"/>
+
+	<div id="planetImg" style="visibility: hidden;"><h4>Mission Target</h4><img src="img/planet-${idx}.jpg" style="zindex: 100; position: relative;"/></div>
+	<div>This is instance [ ${instance} ] of your application [ ${appName} ] cluster.<br/><br/> [ ${requestsServed} ] pages have been served by this instance since it was started.</div>
+
+<map name="planetmap">
+  <area shape="rect" coords="300,150,600,250" href="javascript:setImage('planetImg', true)" alt="Sun">
+</map>
+
+  </body>
+</html>

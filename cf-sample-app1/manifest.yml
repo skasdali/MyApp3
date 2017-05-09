@@ -1,0 +1,5 @@
+# Manifest for deploying application on CloudFoundry
+applications:
+- name: canopy-cf-1
+  memory: 256m
+  instances: 1
